@@ -20,7 +20,7 @@
 
       <!-- สถานะสิ่งอำนวยความสะดวก -->
       <div style="display: flex; justify-content: center;">
-        <p style="position: absolute; background-color: black; margin-top: 105px ; width: 5px; height: 86%; border-radius: 25px;"></p>
+        <p style="position: absolute; background-color: black; margin-top: 105px ; width: 1px; height: 86%; border-radius: 25px;"></p>
     </div>
 
     <div style="display: flex; justify-content: center; font-size: xx-large;"><p>สถานะสิ่งอำนวยความสะดวก</p></div>
@@ -230,16 +230,16 @@
 
   <div style="margin-top: 600px;">
     <div style="display: flex; margin-top: 0 25px 500px 300px;  height: 400%; background-color: rgba(48, 66, 105, 1);">
-<div style="margin: 25px 0 5px 70px;">
+<div style="margin: 16px 0 5px 70px;">
   <img src="/img/facebook.png" width="40px" alt="">
 </div>
-<div style="margin: 35px 0 5px 20px ;">
+<div style="margin: 25px 0 5px 20px ;">
   <img src="/img/youtube.png" width="40px" alt="">
 </div>
-<div style="margin: 25px 0 0 20px ;">
+<div style="margin: 15px 0 0 20px ;">
   <img src="/img/tawit.png" width="40px" alt="">
 </div>
-<div style="margin: 30px 0 0 20px ;">
+<div style="margin: 20px 0 0 20px ;">
   <img src="/img/Instargram.png" width="40px" alt="">
 </div>
 <div style="display: flex; margin: 5px 0 0 700px; justify-content: space-around; width: 25%; font-size: 20px;">
