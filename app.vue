@@ -17,389 +17,474 @@
     </div>
   </div>
 
+
       <!-- สถานะสิ่งอำนวยความสะดวก -->
       <div style="display: flex; justify-content: center;">
-        <p style="position: absolute; background-color: black; margin-top: 105px ; width: 5px; height: 80%; border-radius: 25px;"></p>
+        <p style="position: absolute; background-color: black; margin-top: 105px ; width: 5px; height: 86%; border-radius: 25px;"></p>
     </div>
 
     <div style="display: flex; justify-content: center; font-size: xx-large;"><p>สถานะสิ่งอำนวยความสะดวก</p></div>
     <div style="display: flex; justify-content: center;">
-        <div style="width: 45%; height: 40px; font-size: x-large; padding-top: 0.5%; background-color: rgb(83, 152, 255); margin-right: 2%; text-align: center;">
+        <div style="width: 45%; height: 40px; font-size: x-large; padding-top: 0.5%; border: 1px solid rgba(0, 117, 190, 1); background-color: rgba(217, 232, 245, 1); margin-right: 2%; text-align: center;">
             เครื่องซักผ้า
         </div>
-        <div style="width: 45%; height: 40px; font-size: x-large; padding-top: 0.5%; background-color: rgb(83, 152, 255); margin-left: 2%; text-align: center;">
+        <div style="width: 45%; height: 40px; font-size: x-large; padding-top: 0.5%; border: 1px solid rgba(0, 117, 190, 1); background-color: rgba(217, 232, 245, 1); margin-left: 2%; text-align: center;">
             เครื่องกดน้ำ
         </div>
     </div>
     <!-- เครื่องซักผ้าถังที่ 1 -->
     <div style="position: absolute; margin: 0 0 0 160px;">
-        <div  id="s1" style=" position: absolute; margin: 120px 0 0 150px;" ref="s1">
+        <div v-if="menu1 == true">
+          <div  id="s1" style=" position: absolute; margin: 180px 0 0 150px;"  ref="s1">
+          <div style="width: 90%; color: white; width: 90px;">
+            <div id="freecss" @click="set_free1()" style="margin-top:5px;">ว่าง</div>
+            <div id="unfreecss" @click="set_not_free1()">ไม่ว่าง</div>
+            <div id="unvailablecss" @click="set_unavailable1()">งดชั่วคราว</div>
+          </div>
         </div>
-        <div id="area1" ref="area1" style="margin: 150px 0 0 150px; display: flex; justify-content: center; position: absolute; width: 93px; background-color: rgb(162, 250, 255); border-radius: 10px;  "></div>
+        </div>
+        <div id="area1" v-if="status1 == true" ref="area1" style="margin: 150px 0 0 150px; display: flex; justify-content: center; position: absolute; width: 93px; background-color: rgb(162, 250, 255); border-radius: 10px;  ">
+          <div id="area_s1" @click="update_status1()" style="cursor: pointer;"><p>status</p></div>
+        </div>
         <div style="display: flex;">
             <div style="margin-top: 15vh; display: flex; ">
                 <img style="cursor: pointer;" @click="show_status1()" src="/img/ซัก.png" width="120px" alt="">
-                <div id="icon_status1" ref="icon_status1"></div>
+                <div ref="show_status_light1">
+                </div>
             </div>
         </div>
     </div>
 
     <!-- เครื่องซักผ้าถังที่ 2 -->
     <div style="position: absolute; margin: 0 0 0 470px;">
-        <div  id="s2" style=" position: absolute; margin: 120px 0 0 150px;">
+        <div v-if="menu2 == true">
+          <div  id="s2" style=" position: absolute; margin: 180px 0 0 150px;"  ref="s1">
+          <div style="width: 90%; color: white; width: 90px;">
+            <div id="freecss" @click="set_free2()" style="margin-top:5px;">ว่าง</div>
+            <div id="unfreecss" @click="set_not_free2()">ไม่ว่าง</div>
+            <div id="unvailablecss" @click="set_unavailable2()">งดชั่วคราว</div>
+          </div>
         </div>
-        <div id="area2" ref="area2" style="margin: 150px 0 0 150px; display: flex; justify-content: center; position: absolute; width: 93px; background-color: rgb(162, 250, 255); border-radius: 10px;  "></div>
+        </div>
+        <div id="area2" v-if="status2 == true" ref="area2" style="margin: 150px 0 0 150px; display: flex; justify-content: center; position: absolute; width: 93px; background-color: rgb(162, 250, 255); border-radius: 10px;  ">
+          <div id="area_s2" @click="update_status2()" style="cursor: pointer;"><p>status</p></div>
+        </div>
         <div style="display: flex;">
             <div style="margin-top: 15vh; display: flex; ">
-                <img style="cursor: pointer;" onclick="show_status2()" src="/img/ซัก.png" width="120px" alt="">
-                <div id="icon_status2" ref="icon_status2"></div>
+                <img style="cursor: pointer;" @click="show_status2()" src="/img/ซัก.png" width="120px" alt="">
+                <div ref="show_status_light2" id="icon_status1">
+                </div>
             </div>
         </div>
     </div>
 
 
         <!-- เครื่องซักผ้าถังที่ 3 -->
+
         <div style="position: absolute; margin: 230px 0 0 160px;">
-            <div  id="s3" style=" position: absolute; margin: 120px 0 0 150px;">
-            </div>
-            <div id="area3" ref="area3" style="margin: 150px 0 0 150px; display: flex; justify-content: center; position: absolute; width: 93px; background-color: rgb(162, 250, 255); border-radius: 10px;  "></div>
-            <div style="display: flex;">
-                <div style="margin-top: 15vh; display: flex; ">
-                    <img style="cursor: pointer;" onclick="show_status3()" src="/img/ซัก.png" width="120px" alt="">
-                    <div id="icon_status3" ref="icon_status3"></div>
-                </div>
-            </div>
+        <div v-if="menu3 == true">
+          <div  id="s3" style=" position: absolute; margin: 180px 0 0 150px;"  ref="s2">
+          <div style="width: 90%; color: white; width: 90px;">
+            <div id="freecss" @click="set_free3()" style="margin-top:5px;">ว่าง</div>
+            <div id="unfreecss" @click="set_not_free3()">ไม่ว่าง</div>
+            <div id="unvailablecss" @click="set_unavailable3()">งดชั่วคราว</div>
+          </div>
         </div>
-
-        <!-- เครื่องซักผ้าถังที่ 4 -->
-        <div style="position: absolute; margin: 230px 0 0 470px;">
-            <div  id="s4" style=" position: absolute; margin: 120px 0 0 150px;">
-            </div>
-            <div id="area4" ref="area4" style="margin: 150px 0 0 150px; display: flex; justify-content: center; position: absolute; width: 93px; background-color: rgb(162, 250, 255); border-radius: 10px;  "></div>
-            <div style="display: flex;">
-                <div style="margin-top: 15vh; display: flex; ">
-                    <img style="cursor: pointer;" onclick="show_status4()" src="/img/ซัก.png" width="120px" alt="">
-                    <div id="icon_status4" ref="icon_status4"></div>
-                </div>
-            </div>
         </div>
-
-            <!-- เครื่องกดน้ำ -->
-
-    <!-- เครื่องกดน้ำที่ 1 -->
-    <div style="position: absolute; margin: -35px 0 0 850px;">
-        <div  id="s5" style=" position: absolute; margin: 150px 0 0 190px;">
+        <div id="area3" v-if="status3 == true" ref="area3" style="margin: 150px 0 0 150px; display: flex; justify-content: center; position: absolute; width: 93px; background-color: rgb(162, 250, 255); border-radius: 10px;  ">
+          <div id="area_s3" @click="update_status3()" style="cursor: pointer;"><p>status</p></div>
         </div>
-        <div id="area5" ref="area5" style="margin: 180px 0 0 190px; display: flex; justify-content: center; position: absolute; width: 93px; background-color: rgb(162, 250, 255); border-radius: 10px;  "></div>
         <div style="display: flex;">
             <div style="margin-top: 15vh; display: flex; ">
-                <img style="cursor: pointer;" onclick="show_status5()" src="/img/น้ำ.png" width="250px" alt="">
-                <div style="margin-top: 35px; margin-left: -90px;" id="icon_status5" ref="icon_status5"></div>
+                <img style="cursor: pointer;" @click="show_status3()" src="/img/ซัก.png" width="120px" alt="">
+                <div ref="show_status_light3" id="icon_status1">
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- เครื่องซักผ้าถังที่ 2 -->
-    <div style="position: absolute; margin: -35px 0 0 1150px;">
-        <div  id="s6" style=" position: absolute; margin: 150px 0 0 190px;">
+        <!-- เครื่องซักผ้าถังที่ 4 -->
+        <div style="position: absolute; margin: 230px 0 0 470px;">
+        <div v-if="menu4 == true">
+          <div  id="s4" style=" position: absolute; margin: 180px 0 0 150px;"  ref="s4">
+          <div style="width: 90%; color: white; width: 90px;">
+            <div id="freecss" @click="set_free4()" style="margin-top:5px;">ว่าง</div>
+            <div id="unfreecss" @click="set_not_free4()">ไม่ว่าง</div>
+            <div id="unvailablecss" @click="set_unavailable4()">งดชั่วคราว</div>
+          </div>
         </div>
-        <div id="area6" ref="area6" style="margin: 180px 0 0 190px; display: flex; justify-content: center; position: absolute; width: 93px; background-color: rgb(162, 250, 255); border-radius: 10px;  "></div>
+        </div>
+        <div id="area4" v-if="status4 == true" ref="area4" style="margin: 150px 0 0 150px; display: flex; justify-content: center; position: absolute; width: 93px; background-color: rgb(162, 250, 255); border-radius: 10px;  ">
+          <div id="area_s4" @click="update_status4()" style="cursor: pointer;"><p>status</p></div>
+        </div>
         <div style="display: flex;">
             <div style="margin-top: 15vh; display: flex; ">
-                <img style="cursor: pointer;" onclick="show_status6()" src="/img/น้ำ.png" width="250px" alt="">
-                <div style="margin-top: 35px; margin-left: -90px;" id="icon_status6" ref="icon_status6"></div>
+                <img style="cursor: pointer;" @click="show_status4()" src="/img/ซัก.png" width="120px" alt="">
+                <div ref="show_status_light4" id="icon_status1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+            <!-- เครื่องกดน้ำ -->
+
+    <!-- เครื่องกดน้ำที่ 1 -->
+
+    <div style="position: absolute; margin: -35px 0 0 850px;">
+        <div v-if="menu5 == true">
+          <div  id="s5" style=" position: absolute; margin: 180px 0 0 190px;"  ref="s5">
+          <div style="width: 90%; color: white; width: 90px;">
+            <div id="freecss" @click="set_free5()" style="margin-top:5px;">ว่าง</div>
+            <div id="unfreecss" @click="set_not_free5()">ไม่ว่าง</div>
+            <div id="unvailablecss" @click="set_unavailable5()">งดชั่วคราว</div>
+          </div>
+        </div>
+        </div>
+        <div id="area5" v-if="status5 == true" ref="area5" style="margin: 150px 0 0 190px; display: flex; justify-content: center; position: absolute; width: 93px; background-color: rgb(162, 250, 255); border-radius: 10px;  ">
+          <div id="area_s5" @click="update_status5()" style="cursor: pointer;"><p>status</p></div>
+        </div>
+        <div style="display: flex;">
+            <div style="margin-top: 15vh; display: flex; ">
+                <img style="cursor: pointer;" @click="show_status5()" src="/img/น้ำ.png" width="250px" alt="">
+                <div ref="show_status_light5" style="margin-left: -85px; margin-top: 16%;" id="icon_status1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- เครื่องซักผ้าถังที่ 2 -->
+
+    <div style="position: absolute; margin: -35px 0 0 1150px;">
+        <div v-if="menu6 == true">
+          <div  id="s6" style=" position: absolute; margin: 180px 0 0 190px;"  ref="s6">
+          <div style="width: 90%; color: white; width: 90px;">
+            <div id="freecss" @click="set_free6()" style="margin-top:5px;">ว่าง</div>
+            <div id="unfreecss" @click="set_not_free6()">ไม่ว่าง</div>
+            <div id="unvailablecss" @click="set_unavailable6()">งดชั่วคราว</div>
+          </div>
+        </div>
+        </div>
+        <div id="area6" v-if="status6 == true" ref="area6" style="margin: 150px 0 0 190px; display: flex; justify-content: center; position: absolute; width: 93px; background-color: rgb(162, 250, 255); border-radius: 10px;  ">
+          <div id="area_s6" @click="update_status6()" style="cursor: pointer;"><p>status</p></div>
+        </div>
+        <div style="display: flex;">
+            <div style="margin-top: 15vh; display: flex; ">
+                <img style="cursor: pointer;" @click="show_status6()" src="/img/น้ำ.png" width="250px" alt="">
+                <div ref="show_status_light6" style="margin-left: -85px; margin-top: 16%;" id="icon_status1">
+                </div>
             </div>
         </div>
     </div>
 
         <!-- เครื่องกดน้ำที่ 3 -->
-        <div style="position: absolute; margin: -35px 0 0 850px;">
-            <div  id="s7" style=" position: absolute; margin: 370px 0 0 190px;">
-            </div>
-            <div id="area7" ref="area7" style="margin: 400px 0 0 190px; display: flex; justify-content: center; position: absolute; width: 93px; background-color: rgb(162, 250, 255); border-radius: 10px;  "></div>
-            <div style="display: flex;">
-                <div style="margin-top: 45vh; display: flex; ">
-                    <img style="cursor: pointer;" onclick="show_status7()" src="/img/น้ำ.png" width="250px" alt="">
-                    <div style="margin-top: 35px; margin-left: -90px;" id="icon_status7" ref="icon_status7"></div>
+
+        
+    <div style="position: absolute; margin: 200px 0 0 1150px;">
+        <div v-if="menu7 == true">
+          <div  id="s7" style=" position: absolute; margin: 180px 0 0 190px;"  ref="s7">
+          <div style="width: 90%; color: white; width: 90px;">
+            <div id="freecss" @click="set_free7()" style="margin-top:5px;">ว่าง</div>
+            <div id="unfreecss" @click="set_not_free7()">ไม่ว่าง</div>
+            <div id="unvailablecss" @click="set_unavailable7()">งดชั่วคราว</div>
+          </div>
+        </div>
+        </div>
+        <div id="area7" v-if="status7 == true" ref="area7" style="margin: 150px 0 0 190px; display: flex; justify-content: center; position: absolute; width: 93px; background-color: rgb(162, 250, 255); border-radius: 10px;  ">
+          <div id="area_s7" @click="update_status7()" style="cursor: pointer;"><p>status</p></div>
+        </div>
+        <div style="display: flex;">
+            <div style="margin-top: 15vh; display: flex; ">
+                <img style="cursor: pointer;" @click="show_status7()" src="/img/น้ำ.png" width="250px" alt="">
+                <div ref="show_status_light7" style="margin-left: -85px; margin-top: 16%;" id="icon_status1">
                 </div>
             </div>
         </div>
+    </div>
     
 <!-- เครื่องซักผ้าถังที่ 4 -->
-<div style="position: absolute; margin: -35px 0 0 1150px;">
-  <div  id="s8" style=" position: absolute; margin: 370px 0 0 190px;"></div>
-    <div id="area8" ref="area8" style="margin: 400px 0 0 190px; display: flex; justify-content: center; position: absolute; width: 93px; background-color: rgb(162, 250, 255); border-radius: 10px;  "></div>
-      <div style="display: flex;">
-          <div style="margin-top: 45vh; display: flex; ">
-              <img style="cursor: pointer;" onclick="show_status8()" src="/img/น้ำ.png" width="250px" alt="">
-              <div style="margin-top: 35px; margin-left: -90px;" id="icon_status8" ref="icon_status8"></div>
+
+        
+<div style="position: absolute; margin: 200px 0 0 850px;">
+        <div v-if="menu8 == true">
+          <div  id="s8" style=" position: absolute; margin: 180px 0 0 190px;"  ref="s8">
+          <div style="width: 90%; color: white; width: 90px;">
+            <div id="freecss" @click="set_free8()" style="margin-top:5px;">ว่าง</div>
+            <div id="unfreecss" @click="set_not_free8()">ไม่ว่าง</div>
+            <div id="unvailablecss" @click="set_unavailable8()">งดชั่วคราว</div>
           </div>
-      </div>
+        </div>
+        </div>
+        <div id="area8" v-if="status8 == true" ref="area8" style="margin: 150px 0 0 190px; display: flex; justify-content: center; position: absolute; width: 93px; background-color: rgb(162, 250, 255); border-radius: 10px;  ">
+          <div id="area_s8" @click="update_status8()" style="cursor: pointer;"><p>status</p></div>
+        </div>
+        <div style="display: flex;">
+            <div style="margin-top: 15vh; display: flex; ">
+                <img style="cursor: pointer;" @click="show_status8()" src="/img/น้ำ.png" width="250px" alt="">
+                <div ref="show_status_light8" style="margin-left: -85px; margin-top: 16%;" id="icon_status1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <div style="margin-top: 600px;">
+    <div style="display: flex; margin-top: 0 25px 500px 300px;  height: 400%; background-color: rgba(48, 66, 105, 1);">
+<div style="margin: 25px 0 5px 70px;">
+  <img src="/img/facebook.png" width="40px" alt="">
+</div>
+<div style="margin: 35px 0 5px 20px ;">
+  <img src="/img/youtube.png" width="40px" alt="">
+</div>
+<div style="margin: 25px 0 0 20px ;">
+  <img src="/img/tawit.png" width="40px" alt="">
+</div>
+<div style="margin: 30px 0 0 20px ;">
+  <img src="/img/Instargram.png" width="40px" alt="">
+</div>
+<div style="display: flex; margin: 5px 0 0 700px; justify-content: space-around; width: 25%; font-size: 20px;">
+    <p>กฎกติกา</p>
+    <p>ลงโฆษณา</p>
+    <p>สมัครงาน</p>
+</div>
+</div>
 </div>
 
 </template>
+
+
 <script>
 export default{
-  methods:{
-    // เครื่องซักผ้าเครื่องที่ 1
+  data() {
+    return {
+      status1 : false,
+      menu1 : false,
+      status2 : false,
+      menu2 : false,
+      status3 : false,
+      menu3 : false,
+      status4 : false,
+      menu4 : false,
+      status5 : false,
+      menu5 : false,
+      status6 : false,
+      menu6 : false,
+      status7 : false,
+      menu7 : false,
+      status8 : false,
+      menu8 : false,
 
-    show_status1() {
-  // เปลี่ยนตรง id="area_s..."
-  this.$refs.s1.innerHTML = '<div id="area_s1" @click="update_status1()" style="cursor: pointer;">' +
-    '<p>status</p>' +
-    '</div>';
-  this.$refs.area1 = this.$refs.s1.querySelector('#area_s1'); // กำหนดค่าให้ this.$refs.area1
+    }
+  },
+  methods:{
+show_status1(){
+  this.status1 = true
 },
-update_status1() {
-  console.log("กุ้งตามสั่งอิคริงิก");
-  this.$refs.s1.querySelector('#area_s1').innerHTML = '<div style="width: 90%; color: white;">' +
-    '<div id="freecss" onclick="set_free1()" style="margin-top:5px;">ว่าง</div>' +
-    '<div id="unfreecss" onclick="set_not_free1()">ไม่ว่าง</div>' +
-    '<div id="unvailablecss" onclick="set_unavailable1()">งดชั่วคราว</div>' +
-    '</div>';
+update_status1(){
+  this.menu1 = true
 },
 set_free1(){
-  this.$refs.icon_status1.innerHTML = `<p id="status_free"></P>`
-    reset_area1();
+  this.$refs.show_status_light1.innerHTML = `<p id="status_free"></P>`
+    this.reset_area1();
 
 },
 set_not_free1(){
-  this.$refs.icon_status1.innerHTML =  `<p id="status_unfree"></P>`
-    reset_area1();
+  this.$refs.show_status_light1.innerHTML =  `<p id="status_unfree"></P>`
+    this.reset_area1();
 },
 set_unavailable1(){
-  this.$refs.icon_status1.innerHTML =  `<p id="status_unvailable"></P>`
-    reset_area1();
+  this.$refs.show_status_light1.innerHTML =  `<p id="status_unvailable"></P>`
+    this.reset_area1();
 },
 reset_area1(){
-  this.$refs.area1.innerHTML = ``
-  this.$refs.s1.innerHTML = ``
+  this.status1 = false
+  this.menu1 = false
 },
 
 // เครื่องซักผ้าเครื่องที่ 2
 
 show_status2(){
-    // เปลี่ยนตรง id="area_s..."
-    this.$refs.s2.innerHTML = `<div id="area_s2" onclick="update_status2()" style="cursor: pointer;">
-    <p>status</p>
-</div>`
+  this.status2 = true
 },
 update_status2(){
-  this.$refs.area2.innerHTML = `<div style="width: 90%; color: white; ">
-    <div id="freecss" onclick="set_free2()" style="margin-top:5px;" >ว่าง</div>
-    <div id="unfreecss" onclick="set_not_free2()">ไม่ว่าง</div>
-    <div id="unvailablecss" onclick="set_unavailable2()">งดชั่วคราว</div>
-</div>`
+  this.menu2 = true
 },
 set_free2(){
-  this.$refs.icon_status2.innerHTML = `<p id="status_free"></P>`
-    reset_area2();
+  this.$refs.show_status_light2.innerHTML = `<p id="status_free"></P>`
+    this.reset_area2();
 
 },
 set_not_free2(){
-  this.$refs.icon_status2.innerHTML =  `<p id="status_unfree"></P>`
-    reset_area2();
+  this.$refs.show_status_light2.innerHTML =  `<p id="status_unfree"></P>`
+    this.reset_area2();
 },
 set_unavailable2(){
-  this.$refs.icon_status2.innerHTML =  `<p id="status_unvailable"></P>`
-    reset_area2();
+  this.$refs.show_status_light2.innerHTML =  `<p id="status_unvailable"></P>`
+    this.reset_area2();
 },
 reset_area2(){
-  this.$refs.area2.innerHTML = ``
-  this.$refs.s2.innerHTML = ``
+  this.status2 = false
+  this.menu2 = false
 },
-
 
 // เครื่องซักผ้าเครื่องที่ 3
+
 show_status3(){
-    // เปลี่ยนตรง id="area_s..."
-    this.$refs.s3.innerHTML = `<div id="area_s3" onclick="update_status3()" style="cursor: pointer;">
-    <p>status</p>
-</div>`
+  this.status3 = true
 },
 update_status3(){
-  this.$refs.area3.innerHTML = `<div style="width: 90%; color: white; ">
-    <div id="freecss" onclick="set_free3()" style="margin-top:5px;" >ว่าง</div>
-    <div id="unfreecss" onclick="set_not_free3()">ไม่ว่าง</div>
-    <div id="unvailablecss" onclick="set_unavailable3()">งดชั่วคราว</div>
-</div>`
+  this.menu3 = true
 },
 set_free3(){
-  this.$refs.icon_status3.innerHTML = `<p id="status_free"></P>`
-    reset_area3();
+  this.$refs.show_status_light3.innerHTML = `<p id="status_free"></P>`
+    this.reset_area3();
 
 },
 set_not_free3(){
-  this.$refs.icon_status3.innerHTML =  `<p id="status_unfree"></P>`
-    reset_area3();
+  this.$refs.show_status_light3.innerHTML =  `<p id="status_unfree"></P>`
+    this.reset_area3();
 },
 set_unavailable3(){
-  this.$refs.icon_status3.innerHTML =  `<p id="status_unvailable"></P>`
-    reset_area3();
+  this.$refs.show_status_light3.innerHTML =  `<p id="status_unvailable"></P>`
+    this.reset_area3();
 },
 reset_area3(){
-  this.$refs.area3.innerHTML = ``
-  this.$refs.s3.innerHTML = ``
+  this.status3 = false
+  this.menu3 = false
 },
 
+
 // เครื่องซักผ้าเครื่องที่ 4
+
+
 show_status4(){
-    // เปลี่ยนตรง id="area_s..."
-    this.$refs.s4.innerHTML = `<div id="area_s4" onclick="update_status4()" style="cursor: pointer;">
-    <p>status</p>
-</div>`
+  this.status4 = true
 },
 update_status4(){
-  this.$refs.area4.innerHTML = `<div style="width: 90%; color: white; ">
-    <div id="freecss" onclick="set_free4()" style="margin-top:5px;" >ว่าง</div>
-    <div id="unfreecss" onclick="set_not_free4()">ไม่ว่าง</div>
-    <div id="unvailablecss" onclick="set_unavailable4()">งดชั่วคราว</div>
-</div>`
+  this.menu4 = true
 },
 set_free4(){
-  this.$refs.icon_status4.innerHTML = `<p id="status_free"></P>`
-    reset_area4();
+  this.$refs.show_status_light4.innerHTML = `<p id="status_free"></P>`
+    this.reset_area4();
 
 },
 set_not_free4(){
-  this.$refs.icon_status4.innerHTML =  `<p id="status_unfree"></P>`
-    reset_area4();
+  this.$refs.show_status_light4.innerHTML =  `<p id="status_unfree"></P>`
+    this.reset_area4();
 },
 set_unavailable4(){
-  this.$refs.icon_status4.innerHTML =  `<p id="status_unvailable"></P>`
-    reset_area4();
+  this.$refs.show_status_light4.innerHTML =  `<p id="status_unvailable"></P>`
+    this.reset_area4();
 },
 reset_area4(){
-  this.$refs.area4.innerHTML = ``
-  this.$refs.s4.innerHTML = ``
+  this.status4 = false
+  this.menu4 = false
 },
 
 // เครื่องกดน้ำเครื่องที่ 1
+
 show_status5(){
-    // เปลี่ยนตรง id="area_s..."
-    this.$refs.s5.innerHTML = `<div id="area_s5" onclick="update_status5()" style="cursor: pointer;">
-    <p>status</p>
-</div>`
+  this.status5 = true
 },
 update_status5(){
-  this.$refs.area5.innerHTML = `<div style="width: 90%; color: white; ">
-    <div id="freecss" onclick="set_free5()" style="margin-top:5px;" >ว่าง</div>
-    <div id="unfreecss" onclick="set_not_free5()">ไม่ว่าง</div>
-    <div id="unvailablecss" onclick="set_unavailable5()">งดชั่วคราว</div>
-</div>`
+  this.menu5 = true
 },
 set_free5(){
-  this.$refs.icon_status5.innerHTML = `<p id="status_free"></P>`
-    reset_area5();
+  this.$refs.show_status_light5.innerHTML = `<p id="status_free"></P>`
+    this.reset_area5();
 
 },
 set_not_free5(){
-  this.$refs.icon_status5.innerHTML =  `<p id="status_unfree"></P>`
-    reset_area5();
+  this.$refs.show_status_light5.innerHTML =  `<p id="status_unfree"></P>`
+    this.reset_area5();
 },
 set_unavailable5(){
-  this.$refs.icon_status5.innerHTML =  `<p id="status_unvailable"></P>`
-    reset_area5();
+  this.$refs.show_status_light5.innerHTML =  `<p id="status_unvailable"></P>`
+    this.reset_area5();
 },
 reset_area5(){
-  this.$refs.area5.innerHTML = ``
-  this.$refs.s5.innerHTML = ``
+  this.status5 = false
+  this.menu5 = false
 },
 
 // เครื่องกดน้ำเครื่องที่ 2
+
+
 show_status6(){
-    // เปลี่ยนตรง id="area_s..."
-    this.$refs.s6.innerHTML = `<div id="area_s5" onclick="update_status6()" style="cursor: pointer;">
-    <p>status</p>
-</div>`
+  this.status6 = true
 },
 update_status6(){
-  this.$refs.area6.innerHTML = `<div style="width: 90%; color: white; ">
-    <div id="freecss" onclick="set_free6()" style="margin-top:5px;" >ว่าง</div>
-    <div id="unfreecss" onclick="set_not_free6()">ไม่ว่าง</div>
-    <div id="unvailablecss" onclick="set_unavailable6()">งดชั่วคราว</div>
-</div>`
+  this.menu6 = true
 },
 set_free6(){
-  this.$refs.icon_status6.innerHTML = `<p id="status_free"></P>`
-    reset_area6();
+  this.$refs.show_status_light6.innerHTML = `<p id="status_free"></P>`
+    this.reset_area6();
 
 },
 set_not_free6(){
-  this.$refs.icon_status6.innerHTML =  `<p id="status_unfree"></P>`
-    reset_area6();
+  this.$refs.show_status_light6.innerHTML =  `<p id="status_unfree"></P>`
+    this.reset_area6();
 },
 set_unavailable6(){
-  this.$refs.icon_status6.innerHTML =  `<p id="status_unvailable"></P>`
-    reset_area6();
+  this.$refs.show_status_light6.innerHTML =  `<p id="status_unvailable"></P>`
+    this.reset_area6();
 },
 reset_area6(){
-  this.$refs.area6.innerHTML = ``
-  this.$refs.s6.innerHTML = ``
+  this.status6 = false
+  this.menu6 = false
 },
 
 // เครื่องกดน้ำเครื่องที่ 3
- show_status7(){
-    // เปลี่ยนตรง id="area_s..."
-    this.$refs.s7.innerHTML = `<div id="area_s5" onclick="update_status7()" style="cursor: pointer;">
-    <p>status</p>
-</div>`
+ 
+show_status7(){
+  this.status7 = true
 },
 update_status7(){
-  this.$refs.area7.innerHTML = `<div style="width: 90%; color: white; ">
-    <div id="freecss" onclick="set_free7()" style="margin-top:5px;" >ว่าง</div>
-    <div id="unfreecss" onclick="set_not_free7()">ไม่ว่าง</div>
-    <div id="unvailablecss" onclick="set_unavailable7()">งดชั่วคราว</div>
-</div>`
+  this.menu7 = true
 },
- set_free7(){
-  this.$refs.icon_status7.innerHTML = `<p id="status_free"></P>`
-    reset_area7();
+set_free7(){
+  this.$refs.show_status_light7.innerHTML = `<p id="status_free"></P>`
+    this.reset_area7();
 
 },
 set_not_free7(){
-  this.$refs.icon_status7.innerHTML =  `<p id="status_unfree"></P>`
-    reset_area7();
+  this.$refs.show_status_light7.innerHTML =  `<p id="status_unfree"></P>`
+    this.reset_area7();
 },
 set_unavailable7(){
-  this.$refs.icon_status7.innerHTML =  `<p id="status_unvailable"></P>`
-    reset_area7();
+  this.$refs.show_status_light7.innerHTML =  `<p id="status_unvailable"></P>`
+    this.reset_area7();
 },
 reset_area7(){
-  this.$refs.area7.innerHTML = ``
-  this.$refs.s7.innerHTML = ``
+  this.status7 = false
+  this.menu7 = false
 },
 
+
 // เครื่องกดน้ำเครื่องที่ 4
- show_status8(){
-    // เปลี่ยนตรง id="area_s..."
-    this.$refs.s8.innerHTML = `<div id="area_s8" onclick="update_status8()" style="cursor: pointer;">
-    <p>status</p>
-</div>`
+
+show_status8(){
+  this.status8 = true
 },
 update_status8(){
-  this.$refs.area8.innerHTML = `<div style="width: 90%; color: white; ">
-    <div id="freecss" onclick="set_free8()" style="margin-top:5px;" >ว่าง</div>
-    <div id="unfreecss" onclick="set_not_free8()">ไม่ว่าง</div>
-    <div id="unvailablecss" onclick="set_unavailable8()">งดชั่วคราว</div>
-</div>`
+  this.menu8 = true
 },
 set_free8(){
-  this.$refs.icon_status8.innerHTML = `<p id="status_free"></P>`
-    reset_area8();
+  this.$refs.show_status_light8.innerHTML = `<p id="status_free"></P>`
+    this.reset_area8();
 
 },
 set_not_free8(){
-  this.$refs.icon_status8.innerHTML =  `<p id="status_unfree"></P>`
-    reset_area8();
+  this.$refs.show_status_light8.innerHTML =  `<p id="status_unfree"></P>`
+    this.reset_area8();
 },
 set_unavailable8(){
-  this.$refs.icon_status8.innerHTML =  `<p id="status_unvailable"></P>`
-    reset_area8();
+  this.$refs.show_status_light8.innerHTML =  `<p id="status_unvailable"></P>`
+    this.reset_area8();
 },
 reset_area8(){
-  this.$refs.area8.innerHTML = ``
-  this.$refs.s8.innerHTML = ``
+  this.status8 = false
+  this.menu8 = false
 },
 
   }
@@ -542,3 +627,4 @@ reset_area8(){
     background-color:  rgb(75, 164, 242);
 }
 </style>
+
